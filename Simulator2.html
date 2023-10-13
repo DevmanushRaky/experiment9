@@ -20,7 +20,7 @@
 
 
         .graph-content {
-            font-size: 18px;
+            font-size: 20px;
             background-color: rgb(243, 243, 123);
         }
 
@@ -61,8 +61,8 @@
         }
 
         .microscope-images {
-            width: 350px;
-            height: 270px;
+            width: 230px;
+            height: 230px;
             margin: 3px;
             cursor: pointer;
             display: flex;
@@ -76,6 +76,14 @@
             align-items: center;
             font-weight: 500;
         }
+
+        .img-container {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-content: center;
+            align-items: center;
+        }
     </style>
 
 </head>
@@ -83,56 +91,54 @@
 <body>
     <button type="button" class="btn btn-outline-info  mx-2 my-2"><a href="index.html"> Go to main page</a></button>
     <button type="button" class="btn btn-outline-info  m-3"><a href="Simulator1.html">Back </a></button>
-    <h2 class="d-flex justify-content-center align-items-center"> Micro-TTT Simulator</h2>
-
 
     <div class="container">
 
         <div class="row">
             <div class="col-md-6 col-sm-12">
-                <h2 class="d-flex justify-content-center align-items-center"> Phase diagram </h2>
-                <img src="images/Simulator2.jpg" width="100%" height="auto" alt="" />
+                <h2 class="d-flex justify-content-center align-items-center"> TTT diagram </h2>
+                <img src="images/Simulator2.jpg" width="90%" height="auto" alt="" />
 
             </div>
 
             <div class="col-md-6 col-sm-12">
-                <h3>Microstructures</h3>
+                <h2>Microstructures</h2>
                 <!-- <p class="graph-content">Select the correct microstructure for the point highlighted in the phase diagram.</p> -->
                 <p class="graph-content d-flex justify-content-center align-items-center">Match the correct
                     microstructure image with the heat treatment number </p>
                 <div class="right-side">
                     <div class="microscope  row">
-                        <div class="col-md-6 col-sm-12">
+                        <div class="col-md-4 col-sm-12 img-container">
                             <img class="microscope-images droppable" src="images/Martensite.png" alt="Martensite"
-                                data-drop="Heat 4" data-bs-toggle="modal" data-bs-target="#myModal"
+                                data-drop="Heat treatment 4" data-bs-toggle="modal" data-bs-target="#myModal"
                                 onclick="matchImage(this)">
                             <p class="image-name"> Martensite</p>
                         </div>
 
-                        <div class="col-md-6 col-sm-12">
+                        <div class="col-md-4 col-sm-12 img-container">
                             <img class="microscope-images droppable" src="images/FinePearlite.png" alt="FinePearlite"
-                                data-drop="Heat 2" data-bs-toggle="modal" data-bs-target="#myModal"
+                                data-drop="Heat treatment 2" data-bs-toggle="modal" data-bs-target="#myModal"
                                 onclick="matchImage(this)">
                             <p class="image-name"> Fine Pearlite</p>
                         </div>
 
-                        <div class="col-md-6 col-sm-12">
+                        <div class="col-md-4 col-sm-12 img-container">
                             <img class="microscope-images droppable" src="images/UpperPearlite.png" alt="UpperPearlite"
-                                data-drop="Heat 5" data-bs-toggle="modal" data-bs-target="#myModal"
+                                data-drop="Heat treatment 5" data-bs-toggle="modal" data-bs-target="#myModal"
                                 onclick="matchImage(this)">
                             <p class="image-name"> Upper Pearlite</p>
                         </div>
 
-                        <div class="col-md-6 col-sm-12">
+                        <div class="col-md-4 col-sm-12 img-container">
                             <img class="microscope-images droppable" src="images/CoarsePearlite.png"
-                                alt="CoarsePearlite" data-drop="Heat 1" data-bs-toggle="modal" data-bs-target="#myModal"
-                                onclick="matchImage(this)">
+                                alt="CoarsePearlite" data-drop="Heat treatment 1" data-bs-toggle="modal"
+                                data-bs-target="#myModal" onclick="matchImage(this)">
                             <p class="image-name"> Coarse Pearlite</p>
                         </div>
 
-                        <div class="col-md-6 col-sm-12">
+                        <div class="col-md-4 col-sm-12 img-container">
                             <img class="microscope-images droppable" src="images/LowerPearlite.png" alt="LowerPearlite"
-                                data-drop="Heat 3" data-bs-toggle="modal" data-bs-target="#myModal"
+                                data-drop="Heat treatment 3" data-bs-toggle="modal" data-bs-target="#myModal"
                                 onclick="matchImage(this)">
                             <p class="image-name"> Lower Pearlite</p>
                         </div>
@@ -164,14 +170,14 @@
     <!-- JavaScript to handle the quiz -->
     <script>
         // Define an array of points and initialize the current point index to 0
-        const points = ['Heat 1', 'Heat 2', 'Heat 3', 'Heat 4', 'Heat 5'];
+        const points = ['Heat treatment 1', 'Heat treatment 2', 'Heat treatment 3', 'Heat treatment 4', 'Heat treatment 5'];
         let currentPointIndex = 0;
 
         // Function to show the instruction for the current point
         function showInstructionForCurrentPoint() {
             const graphContent = document.querySelector('.graph-content');
             if (currentPointIndex < points.length) {
-                graphContent.textContent = `Click on image for select the correct microstructure for ${points[currentPointIndex]}`;
+                graphContent.textContent = `Click on image selecting the correct microstructure for ${points[currentPointIndex]}`;
             } else {
                 graphContent.textContent = 'Quiz Completed';
             }
