@@ -95,7 +95,9 @@
             <!-- Graph image of sample -->
             <div class="col-md-4 polishing">
                 <!-- Processing maching images  -->
-                <img src="./images/FurnceMachine.gif" alt="sample processing in machine" id="processing-image"
+                <img src="./images/FurnceMachine.gif" alt="sample processing in machine" id="processing-image1"
+                    style="display:none" />
+                <img src="./images/FurnceMachine1.gif" alt="sample processing in machine" id="processing-image2"
                     style="display:none" />
 
 
@@ -211,7 +213,7 @@
             selectedOption = option;
             // Show processing images 
 
-            document.getElementById("processing-image").style.display = "block";
+            document.getElementById("processing-image1").style.display = "block";
 
             // Simulate processing delay (3 seconds)
             setTimeout(function () {
@@ -220,6 +222,11 @@
                 var imageId = option.toLowerCase() + "-image";
                 document.getElementById(imageId).style.display = "block";
                 document.getElementById("polish-etch-button").style.display = "block";
+
+                //  Hide processing image 1 
+                document.getElementById("processing-image1").style.display = "none";
+                // Showing second processing images 
+                document.getElementById("processing-image2").style.display = "block";
 
             }, 3000); // 3 seconds delay
         }
