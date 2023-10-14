@@ -44,6 +44,14 @@
             align-items: center;
         }
 
+        .center-content {
+            display: flex;
+            flex-direction: column;
+            align-content: center;
+            align-items: center;
+            margin-top: 90px;
+        }
+
         /* Added style for random images container */
         #final-images {
             display: none;
@@ -69,13 +77,13 @@
         <div class="row">
 
             <!-- Sample  -->
-            <div class="col-md-2 polishing">
-                <img src="./images/sample.png" alt="sample " width="100%" height="auto" />
+            <div class="col-md-2 center-content ">
                 <button type="button" class="btn btn-outline-info m-2" onclick="showOptions()">Sample</button>
+                <img src="./images/sample.png" alt="sample " width="100%" height="auto" />
             </div>
 
             <!-- Action with sample  -->
-            <div class="col-md-2">
+            <div class="col-md-2 center-content">
                 <div class="options-container" id="options-container">
                     <label>What type of heat treatment you want to perform with the sample ?</label>
                     <button class="btn btn-outline-info m-2" onclick="processSample('Annealing')">Annealing</button>
@@ -87,7 +95,8 @@
             <!-- Graph image of sample -->
             <div class="col-md-4 polishing">
                 <!-- Processing maching images  -->
-                <img src="./images/FurnceMachine.gif" alt="sample processing in machine" id="processing-image" style="display:none" />
+                <img src="./images/FurnceMachine.gif" alt="sample processing in machine" id="processing-image"
+                    style="display:none" />
 
 
 
@@ -202,7 +211,7 @@
             selectedOption = option;
             // Show processing images 
 
-             document.getElementById("processing-image").style.display = "block";
+            document.getElementById("processing-image").style.display = "block";
 
             // Simulate processing delay (3 seconds)
             setTimeout(function () {
@@ -219,7 +228,7 @@
         function polishEtch() {
             // Simulate preparing images delay (3 seconds)
             setTimeout(function () {
-             
+
                 // Assign specific images for Annealing, Normalizing, and Quenching
                 var randomImage1 = './images/AnnealingGraph.png'; // Annealing image
                 var randomImage2 = './images/NormalizingGraph.png'; // Normalizing image
@@ -271,16 +280,17 @@
             var modalContent = document.getElementById("image-details-content");
 
             if (selectedOption === 'Annealing') {
-                modalContent.innerHTML = "Annealing gives coarse pearlite due to sufficient diffusion.   Applications: Metal fabricators, bars, billets, tubes";
+                modalContent.innerHTML = "Annealing gives coarse pearlite due to sufficient diffusion. <br><b>Applications:</b> Metal fabricators, bars, billets, tubes";
             } else if (selectedOption === 'Normalizing') {
-                modalContent.innerHTML = "Normalizing gives fine pearlite due to sufficient diffusion.   Applications :Piano wires, increase machinability of metal parts in automotive industries ";
+                modalContent.innerHTML = "Normalizing gives fine pearlite due to sufficient diffusion. <br><b>Applications:</b> Piano wires, increase machinability of metal parts in automotive industries ";
             } else if (selectedOption === 'Quenching') {
-                modalContent.innerHTML = "Quenching gives martensite  via diffusion-less transformation. Applications:Truck moving liners, earthmoving buckets, cutting tools, storage tanks ";
+                modalContent.innerHTML = "Quenching gives martensite  via diffusion-less transformation. <br><b>Applications:</b> Truck moving liners, earthmoving buckets, cutting tools, storage tanks ";
             }
 
             // Show the modal
             detailsModal.style.display = "block";
         }
+
     </script>
 </body>
 
