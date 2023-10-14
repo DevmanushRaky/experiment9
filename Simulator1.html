@@ -69,7 +69,8 @@
         <div class="row">
 
             <!-- Sample  -->
-            <div class="col-md-2">
+            <div class="col-md-2 polishing">
+                <img src="./images/sample.png" alt="sample " width="100%" height="auto" />
                 <button type="button" class="btn btn-outline-info m-2" onclick="showOptions()">Sample</button>
             </div>
 
@@ -85,6 +86,11 @@
 
             <!-- Graph image of sample -->
             <div class="col-md-4 polishing">
+                <!-- Processing maching images  -->
+                <img src="./images/FurnceMachine.gif" alt="sample processing in machine" id="processing-image" style="display:none" />
+
+
+
                 <img src="./images/Experiment 9-Simulator 1.gif" alt=" FurnaceAnealingGraph" class="experiment-image"
                     id="annealing-image" />
                 <img src="./images/Experiment 9-Simulator 1-2.gif" alt=" FurnaceNormalizingGraph"
@@ -150,35 +156,6 @@
 
 
 
-
-
-
-    <!-- Modal for sample processing message -->
-    <div class="modal fade" id="processing-modal" tabindex="-1" role="dialog" aria-labelledby="processing-modal-label"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <img src="./images/FurnceMachine.gif" alt="sample processing in machine" /> <br />
-                    Your sample is processing in the machine...
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal after clicking on Polish Etch -->
-    <!-- <div class="modal fade" id="etch-processing-modal" tabindex="-1" role="dialog"
-        aria-labelledby="etch-processing-modal-label" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <img src="./images/PolishEtch.png" alt="image processing in machine" /> <br />
-                    Your sample is being polish etched ...
-                </div>
-            </div>
-        </div>
-    </div> -->
-
     <!-- Modal for displaying Correct message -->
     <div class="modal fade" id="correct-modal" tabindex="-1" role="dialog" aria-labelledby="correct-modal-label"
         aria-hidden="true">
@@ -223,13 +200,12 @@
             }
 
             selectedOption = option;
-            // Show processing modal
-            $('#processing-modal').modal('show');
+            // Show processing images 
+
+             document.getElementById("processing-image").style.display = "block";
 
             // Simulate processing delay (3 seconds)
             setTimeout(function () {
-                // Hide modal after processing
-                $('#processing-modal').modal('hide');
 
                 // Show the relevant image and "Polish Etch" button
                 var imageId = option.toLowerCase() + "-image";
@@ -241,14 +217,9 @@
 
 
         function polishEtch() {
-            // Show processing modal for graph images
-            // $('#etch-processing-modal').modal('show');
-
             // Simulate preparing images delay (3 seconds)
             setTimeout(function () {
-                // Hide modal after processing
-                // $('#etch-processing-modal').modal('hide');
-
+             
                 // Assign specific images for Annealing, Normalizing, and Quenching
                 var randomImage1 = './images/AnnealingGraph.png'; // Annealing image
                 var randomImage2 = './images/NormalizingGraph.png'; // Normalizing image
