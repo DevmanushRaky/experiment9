@@ -215,6 +215,13 @@
         }
 
         function processSample(option) {
+            // Reset the previously selected option and hide the previous image and "Polish Etch" button
+            if (selectedOption) {
+                var previousImageId = selectedOption.toLowerCase() + "-image";
+                document.getElementById(previousImageId).style.display = "none";
+                document.getElementById("polish-etch-button").style.display = "none";
+            }
+
             selectedOption = option;
             // Show processing modal
             $('#processing-modal').modal('show');
@@ -228,10 +235,8 @@
                 var imageId = option.toLowerCase() + "-image";
                 document.getElementById(imageId).style.display = "block";
                 document.getElementById("polish-etch-button").style.display = "block";
-                // hide option button when showing graph image and polish etch button 
-                // document.getElementById("options-container").style.display = "none";
 
-            }, 3000); // 2 seconds delay
+            }, 3000); // 3 seconds delay
         }
 
 
@@ -295,9 +300,9 @@
             var modalContent = document.getElementById("image-details-content");
 
             if (selectedOption === 'Annealing') {
-                modalContent.innerHTML = "Annealing gives coarse pearlite due to sufficient diffusion. Applications: Metal fabricators, bars, billets, tubes";
+                modalContent.innerHTML = "Annealing gives coarse pearlite due to sufficient diffusion.   Applications: Metal fabricators, bars, billets, tubes";
             } else if (selectedOption === 'Normalizing') {
-                modalContent.innerHTML = "Normalizing gives fine pearlite due to sufficient diffusion.Applications :Piano wires, increase machinability of metal parts in automotive industries ";
+                modalContent.innerHTML = "Normalizing gives fine pearlite due to sufficient diffusion.   Applications :Piano wires, increase machinability of metal parts in automotive industries ";
             } else if (selectedOption === 'Quenching') {
                 modalContent.innerHTML = "Quenching gives martensite  via diffusion-less transformation. Applications:Truck moving liners, earthmoving buckets, cutting tools, storage tanks ";
             }
