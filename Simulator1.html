@@ -17,12 +17,6 @@
             text-decoration: none;
         }
 
-        .experiment-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
         .options-container {
             display: none;
             flex-direction: column;
@@ -32,12 +26,22 @@
 
         .experiment-image {
             display: none;
+            width: 100%;
+            height: auto;
             margin-top: 20px;
         }
 
         .graph-images {
             display: none;
             margin-top: 20px;
+        }
+
+        .polishing {
+            display: flex;
+            flex-direction: column;
+            align-content: center;
+            /* justify-content: center; */
+            align-items: center;
         }
 
         /* Added style for random images container */
@@ -61,60 +65,93 @@
     <h2 class="d-flex justify-content-center align-items-center">Tailoring and learning the microstructures via heat
         treatment for steels</h2>
 
-    <div class="experiment-container">
-        <!-- Sample  -->
-        <button type="button" class="btn btn-outline-info m-2" onclick="showOptions()">Sample</button>
+    <div class="container">
+        <div class="row">
 
-        <!-- Action with sample  -->
-        <div class="options-container" id="options-container">
-            <label>Which action do you want to perform with the sample?</label>
-            <button class="btn btn-outline-info m-2" onclick="processSample('Annealing')">Annealing</button>
-            <button class="btn btn-outline-info m-2" onclick="processSample('Normalizing')">Normalizing</button>
-            <button class="btn btn-outline-info m-2" onclick="processSample('Quenching')">Quenching</button>
-        </div>
+            <!-- Sample  -->
+            <div class="col-md-2">
+                <button type="button" class="btn btn-outline-info m-2" onclick="showOptions()">Sample</button>
+            </div>
 
-        <!-- Graph image of sample -->
-        <img src="./images/FurnaceAnealingGraph.png" alt=" FurnaceAnealingGraph" class="experiment-image"
-            id="annealing-image" />
-        <img src="./images/FurnaceNormalizingGraph.png" alt=" FurnaceNormalizingGraph" class="experiment-image"
-            id="normalizing-image" />
-        <img src="./images/FurnaceQuenchingGraph.png" alt=" FurnaceQuenchingGraph" class="experiment-image"
-            id="quenching-image" />
-
-        <!-- Polish Etch  -->
-        <button type="button" class="btn btn-outline-info m-2" id="polish-etch-button" style="display: none;"
-            onclick="polishEtch()">Polish Etch</button>
-
-        <!-- Random Images Container -->
-        <div id="final-images" class="mt-3">
-            <p> Please select the correct image for the action you have performed </p>
-            <div class="row">
-                <!-- Display three images here -->
-                <div class="col-md-4">
-                    <img src="" alt="Random Image 1" id="random-image-1"
-                        onclick="handleImageSelection('random-image-1')" class="finalimages">
+            <!-- Action with sample  -->
+            <div class="col-md-2">
+                <div class="options-container" id="options-container">
+                    <label>What type of heat treatment you want to perform with the sample ?</label>
+                    <button class="btn btn-outline-info m-2" onclick="processSample('Annealing')">Annealing</button>
+                    <button class="btn btn-outline-info m-2" onclick="processSample('Normalizing')">Normalizing</button>
+                    <button class="btn btn-outline-info m-2" onclick="processSample('Quenching')">Quenching</button>
                 </div>
-                <div class="col-md-4">
-                    <img src="" alt="Random Image 2" id="random-image-2"
-                        onclick="handleImageSelection('random-image-2')" class="finalimages">
-                </div>
-                <div class="col-md-4">
-                    <img src="" alt="Random Image 3" id="random-image-3"
-                        onclick="handleImageSelection('random-image-3')" class="finalimages">
+            </div>
+
+            <!-- Graph image of sample -->
+            <div class="col-md-4 polishing">
+                <img src="./images/Experiment 9-Simulator 1.gif" alt=" FurnaceAnealingGraph" class="experiment-image"
+                    id="annealing-image" />
+                <img src="./images/Experiment 9-Simulator 1-2.gif" alt=" FurnaceNormalizingGraph"
+                    class="experiment-image" id="normalizing-image" />
+                <img src="./images/Experiment 9-Simulator 1-3.gif" alt=" FurnaceQuenchingGraph" class="experiment-image"
+                    id="quenching-image" />
+
+                <!-- Polish Etch  -->
+                <button type="button" class="btn btn-outline-info m-2" id="polish-etch-button" style="display: none;"
+                    onclick="polishEtch()">Polish Etch</button>
+
+            </div>
+            <!-- Random Images Container -->
+            <div class="col-md-4">
+                <div id="final-images" class="mt-3">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p> Please select the correct image for the action you have performed </p>
+                            <div class="row">
+                                <!-- Display three images here -->
+                                <div class="col-md-12">
+                                    <img src="" alt="Random Image 1" id="random-image-1"
+                                        onclick="handleImageSelection('random-image-1')" class="finalimages">
+                                </div>
+                                <div class="col-md-12">
+                                    <img src="" alt="Random Image 2" id="random-image-2"
+                                        onclick="handleImageSelection('random-image-2')" class="finalimages">
+                                </div>
+                                <div class="col-md-12">
+                                    <img src="" alt="Random Image 3" id="random-image-3"
+                                        onclick="handleImageSelection('random-image-3')" class="finalimages">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <!--  Show Details button  -->
+                            <button type="button" class="btn btn-outline-info m-2" id="show-details-button"
+                                style="display: none;" onclick="showDetails()">Show Details</button>
+
+                            <span id="image-details-modal" style="display: none;">
+                                <!-- Details about the selected option -->
+                                <span id="image-details-content">Details will be displayed here.</span>
+                            </span>
+                        </div>
+                    </div>
+
+
                 </div>
             </div>
         </div>
 
 
-        <!--  Show Details button  -->
-        <button type="button" class="btn btn-outline-info m-2" id="show-details-button" style="display: none;"
-            onclick="showDetails()">Show Details</button> 
 
-        <div id="image-details-modal" style="display: none;">
-            <!-- Details about the selected option -->
-            <p id="image-details-content">Details will be displayed here.</p>
-        </div>
+
     </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
 
     <!-- Modal for sample processing message -->
     <div class="modal fade" id="processing-modal" tabindex="-1" role="dialog" aria-labelledby="processing-modal-label"
@@ -122,7 +159,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-body">
-                    <img src="./images/FurnceMachine.png" alt="sample processing in machine" /> <br />
+                    <img src="./images/FurnceMachine.gif" alt="sample processing in machine" /> <br />
                     Your sample is processing in the machine...
                 </div>
             </div>
@@ -130,7 +167,7 @@
     </div>
 
     <!-- Modal after clicking on Polish Etch -->
-    <div class="modal fade" id="etch-processing-modal" tabindex="-1" role="dialog"
+    <!-- <div class="modal fade" id="etch-processing-modal" tabindex="-1" role="dialog"
         aria-labelledby="etch-processing-modal-label" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -140,7 +177,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
     <!-- Modal for displaying Correct message -->
     <div class="modal fade" id="correct-modal" tabindex="-1" role="dialog" aria-labelledby="correct-modal-label"
@@ -169,28 +206,6 @@
     </div>
 
 
-    <!-- Modal for displaying details -->
-<!-- <div class="modal fade" id="image-details-modal" tabindex="-1" role="dialog" aria-labelledby="image-details-modal-label" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="image-details-modal-label">Details</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <p id="image-details-content">Details will be displayed here.</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div> -->
-
-
-
 
     <script>
         var selectedOption = '';
@@ -214,20 +229,20 @@
                 document.getElementById(imageId).style.display = "block";
                 document.getElementById("polish-etch-button").style.display = "block";
                 // hide option button when showing graph image and polish etch button 
-                document.getElementById("options-container").style.display = "none";
+                // document.getElementById("options-container").style.display = "none";
 
-            }, 3000); // 3 seconds delay
+            }, 3000); // 2 seconds delay
         }
 
 
         function polishEtch() {
             // Show processing modal for graph images
-            $('#etch-processing-modal').modal('show');
+            // $('#etch-processing-modal').modal('show');
 
             // Simulate preparing images delay (3 seconds)
             setTimeout(function () {
                 // Hide modal after processing
-                $('#etch-processing-modal').modal('hide');
+                // $('#etch-processing-modal').modal('hide');
 
                 // Assign specific images for Annealing, Normalizing, and Quenching
                 var randomImage1 = './images/AnnealingGraph.png'; // Annealing image
@@ -243,7 +258,7 @@
 
                 // Show the random images container
                 document.getElementById("final-images").style.display = "block";
-            }, 3000); // 3 seconds delay
+            }, 1000); // 1 seconds delay
         }
 
         function handleImageSelection(imageId) {
