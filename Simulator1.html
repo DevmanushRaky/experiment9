@@ -20,21 +20,21 @@
         .options-container {
             display: none;
             flex-direction: column;
-            align-items: center;
+            align-items: stretch;
             margin-top: 20px;
         }
 
         .sample-text {
             border-radius: 5px;
             padding: 5px;
-            background-color: rgb(243, 243, 123);
+            background-color: rgba(243, 243, 123, 0.655);
         }
 
         .experiment-image {
             display: none;
             width: 100%;
             height: auto;
-            margin-top: 20px;
+            margin-top: 15px;
         }
 
         .graph-images {
@@ -125,7 +125,7 @@
             <!-- Action with sample  -->
             <div class="col-md-2 center-content">
                 <div class="options-container" id="options-container">
-                    <label>What type of heat treatment you want to perform with the sample ?</label>
+                    <label class="sample-text">What type of heat treatment you want to perform with the sample ?</label>
                     <!-- Annealing button -->
                     <button class="btn btn btn-success m-2"
                         onclick="processSample('Annealing'); changeColor(this);">Annealing</button>
@@ -152,10 +152,6 @@
                 <img src="./images/FurnceMachine1.gif" alt="sample processing in machine" id="processing-image2"
                     style="display:none" />
 
-                <!--  temprature profile -->
-                <p id="temprature-profile" style="display:none; margin-bottom:0; font-size: 20px;">Temprature Profile
-                </p>
-
                 <!--  Graph image  -->
                 <img src="./images/Experiment 9-Simulator 1.gif" alt=" FurnaceAnealingGraph" class="experiment-image"
                     id="annealing-image" />
@@ -166,7 +162,7 @@
 
 
                 <!--   heat treatment completed  -->
-                <p id="heat-treatment-completed" style="display:none; margin-bottom:0; font-size: 20px;">Heat treatment
+                <p id="heat-treatment-completed" class="sample-text" style="display:none; margin-bottom:0; font-size: 18px;">Heat treatment
                     process is completed</p>
 
             </div>
@@ -184,7 +180,7 @@
                             style="display: none;" onclick="processStep(1)">Etching</button>
 
                         <!-- Optical Microscope button -->
-                        <button type="button" class="btn btn-outline-info m-2" id="Optical-microscope-button"
+                        <button type="button" class="btn btn-outline-info m-1" id="Optical-microscope-button"
                             style="display: none;" onclick="processStep(2)">Optical microscope</button>
 
 
@@ -289,7 +285,6 @@
             if (selectedOption) {
                 var previousImageId = selectedOption.toLowerCase() + "-image";
                 document.getElementById(previousImageId).style.display = "none";
-                document.getElementById("temprature-profile").style.display = "none";
                 document.getElementById("heat-treatment-completed").style.display = "none";
 
                 document.getElementById("Polishing-button").style.display = "none";
@@ -326,7 +321,6 @@
             // Show the relevant image and "Polish Etch" button
             var imageId = option.toLowerCase() + "-image";
             document.getElementById(imageId).style.display = "block";
-            document.getElementById("temprature-profile").style.display = "block";
 
             // Simulate processing delay (11 seconds)
             setTimeout(function () {
