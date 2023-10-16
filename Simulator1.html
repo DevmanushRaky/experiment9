@@ -162,7 +162,8 @@
 
 
                 <!--   heat treatment completed  -->
-                <p id="heat-treatment-completed" class="sample-text" style="display:none; margin-bottom:0; font-size: 18px;">Heat treatment
+                <p id="heat-treatment-completed" class="sample-text"
+                    style="display:none; margin-bottom:0; font-size: 18px;">Heat treatment
                     process is completed</p>
 
             </div>
@@ -215,6 +216,9 @@
                         <!--  Show Details button  -->
                         <button type="button" class="btn btn-outline-info m-2" id="show-details-button"
                             style="display: none;" onclick="showDetails()">Show Details</button>
+                        <!--  Reset Details button  -->
+                        <button type="button" class="btn btn-danger m-2" id="reset-details-button"
+                            style="display: none;" onclick="location.reload()">Reset </button>
 
                         <span id="image-details-modal" style="display: none;">
                             <!-- Details about the selected option -->
@@ -293,6 +297,7 @@
                 document.getElementById("optical-microscope-image").style.display = "none";
                 document.getElementById("final-images").style.display = "none";
                 document.getElementById("show-details-button").style.display = "none";
+                document.getElementById("reset-details-button").style.display = "none";
                 document.getElementById("image-details-modal").style.display = "none";
 
                 // reset buttons background color
@@ -322,7 +327,7 @@
             var imageId = option.toLowerCase() + "-image";
             document.getElementById(imageId).style.display = "block";
 
-            // Simulate processing delay (11 seconds)
+            // Simulate processing delay (12 seconds)
             setTimeout(function () {
                 //  Show button after graph completed 
                 document.getElementById("Polishing-button").style.display = "block";
@@ -339,7 +344,7 @@
                 // Show heat treatment completed 
                 document.getElementById("heat-treatment-completed").style.display = "block";
 
-            }, 11000); // 11 seconds delay
+            }, 12000); // 12 seconds delay
         }
 
 
@@ -379,20 +384,6 @@
             }
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         function OpticalMicroscope() {
             // Showing microscope image
             document.getElementById("optical-microscope-image").style.display = "block";
@@ -414,6 +405,7 @@
 
                 // hide the "Show Details" button
                 document.getElementById("show-details-button").style.display = "none";
+                document.getElementById("reset-details-button").style.display = "none";
 
                 // Show the random images container
                 document.getElementById("final-images").style.display = "block";
@@ -434,6 +426,7 @@
             ) {
                 showCorrectModal();
                 document.getElementById("show-details-button").style.display = "block"; // Make the "Show Details" button visible
+                document.getElementById("reset-details-button").style.display = "block"; // Make the "Show Details" button visible
             } else {
                 // Show the incorrect modal if the selected image is incorrect
                 $('#incorrect-modal').modal('show');
@@ -452,7 +445,6 @@
             // Display specific details for Annealing, Normalizing, or Quenching based on the selected action
             var detailsModal = document.getElementById("image-details-modal");
             var modalContent = document.getElementById("image-details-content");
-            console.log("show details calling ")
 
             if (selectedOption === 'Annealing') {
                 modalContent.innerHTML = "Annealing gives coarse pearlite due to sufficient diffusion. <br><b>Applications:</b> Metal fabricators, bars, billets, tubes";
@@ -464,7 +456,6 @@
 
             // Show the modal
             detailsModal.style.display = "block";
-            console.log("show details end  ")
         }
 
     </script>
