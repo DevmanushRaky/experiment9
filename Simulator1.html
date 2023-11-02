@@ -325,6 +325,7 @@
 
             // Show the relevant image and "Polish Etch" button
             var imageId = option.toLowerCase() + "-image";
+            console.log("graph processing imgae id =", imageId)
             document.getElementById(imageId).style.display = "block";
 
             // Simulate processing delay (12 seconds)
@@ -338,11 +339,22 @@
                 document.getElementById("processing-image1").style.display = "none";
                 // Showing second processing images 
                 document.getElementById("processing-image2").style.display = "block";
-
-
-
                 // Show heat treatment completed 
                 document.getElementById("heat-treatment-completed").style.display = "block";
+
+                // Show final heat processinbg images 
+                var annealingfinalimge = './images/AnnealingFinalImage.PNG'; // Annealing image
+                var normalizingfinalimage = './images/NormalizingFinalImage.PNG'; // Normalizing image
+                var quenchingfinalimage = './images/QuenchingFinalImage.PNG'; // Quenching image
+                if (imageId == 'annealing-image') {
+                    document.getElementById(imageId).src = annealingfinalimge;
+                }
+                if (imageId == 'normalizing-image') {
+                    document.getElementById(imageId).src = normalizingfinalimage;
+                }
+                if (imageId == 'quenching-image') {
+                    document.getElementById(imageId).src = quenchingfinalimage;
+                }
 
             }, 12000); // 12 seconds delay
         }
