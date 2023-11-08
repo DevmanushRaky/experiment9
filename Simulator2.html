@@ -93,6 +93,58 @@
         }
     </style>
 
+
+
+    <!-- JavaScript to handle the quiz -->
+    <script>
+        // Define an array of points and initialize the current point index to 0
+        const points = ['Heat treatment 1', 'Heat treatment 2', 'Heat treatment 3', 'Heat treatment 4', 'Heat treatment 5'];
+        let currentPointIndex = 0;
+
+        // Function to show the instruction for the current point
+        function showInstructionForCurrentPoint() {
+            const graphContent = document.querySelector('.graph-content');
+            if (currentPointIndex < points.length) {
+                graphContent.textContent = `Click on image selecting the correct microstructure for ${points[currentPointIndex]}`;
+            } else {
+                graphContent.textContent = 'Quiz Completed';
+            }
+        }
+
+        // Function to handle image click and check the match
+        function matchImage(image) {
+            const matchingResult = document.getElementById('matchingResult');
+            const matchingImage = document.getElementById('matchingImage');
+            const modal = new bootstrap.Modal(document.getElementById('myModal'));
+
+            if (image.dataset.drop === points[currentPointIndex]) {
+                matchingResult.textContent = `Correct match for ${points[currentPointIndex]}`;
+                currentPointIndex++; // Move to the next point
+
+                // Check if all points have been matched, and show quiz completion modal if needed
+                if (currentPointIndex === points.length) {
+                    matchingResult.textContent = 'Congratulations! You have completed the quiz.';
+                    modal.show();
+                    showInstructionForCurrentPoint();
+                } else {
+                    // Show the instruction for the next point
+                    showInstructionForCurrentPoint();
+                }
+            } else {
+                matchingResult.textContent = 'Incorrect, Please match the correct microstructure image with the given heat treatment number.';
+            }
+
+            matchingImage.src = image.src;
+            modal.show();
+        }
+
+        // Call the function to show the instruction for the initial point
+        showInstructionForCurrentPoint();
+    </script>
+
+
+
+
 </head>
 
 <body>
@@ -175,54 +227,6 @@
         </div>
     </div>
 
-
-
-    <!-- JavaScript to handle the quiz -->
-    <script>
-        // Define an array of points and initialize the current point index to 0
-        const points = ['Heat treatment 1', 'Heat treatment 2', 'Heat treatment 3', 'Heat treatment 4', 'Heat treatment 5'];
-        let currentPointIndex = 0;
-
-        // Function to show the instruction for the current point
-        function showInstructionForCurrentPoint() {
-            const graphContent = document.querySelector('.graph-content');
-            if (currentPointIndex < points.length) {
-                graphContent.textContent = `Click on image selecting the correct microstructure for ${points[currentPointIndex]}`;
-            } else {
-                graphContent.textContent = 'Quiz Completed';
-            }
-        }
-
-        // Function to handle image click and check the match
-        function matchImage(image) {
-            const matchingResult = document.getElementById('matchingResult');
-            const matchingImage = document.getElementById('matchingImage');
-            const modal = new bootstrap.Modal(document.getElementById('myModal'));
-
-            if (image.dataset.drop === points[currentPointIndex]) {
-                matchingResult.textContent = `Correct match for ${points[currentPointIndex]}`;
-                currentPointIndex++; // Move to the next point
-
-                // Check if all points have been matched, and show quiz completion modal if needed
-                if (currentPointIndex === points.length) {
-                    matchingResult.textContent = 'Congratulations! You have completed the quiz.';
-                    modal.show();
-                    showInstructionForCurrentPoint();
-                } else {
-                    // Show the instruction for the next point
-                    showInstructionForCurrentPoint();
-                }
-            } else {
-                matchingResult.textContent = 'Incorrect, Please match the correct microstructure image with the given heat treatment number.';
-            }
-
-            matchingImage.src = image.src;
-            modal.show();
-        }
-
-        // Call the function to show the instruction for the initial point
-        showInstructionForCurrentPoint();
-    </script>
 
 
 
